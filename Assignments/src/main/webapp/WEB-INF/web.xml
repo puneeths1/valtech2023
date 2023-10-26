@@ -15,17 +15,16 @@
     	<description></description>
     	<servlet-class>Management.TagCounterServlet</servlet-class>
     </servlet>
-   
+ 
     <servlet-mapping>
     	<servlet-name>NumberSystem</servlet-name>
     	<url-pattern>/NumberSystem</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
     	<servlet-name>TagCounterServlet</servlet-name>
-    	<url-pattern>/TagCounter</url-pattern>
+    	<url-pattern>/TagCounterServlet</url-pattern>
     </servlet-mapping>
-    
-
+   
     <!-- Welcome file list and error page (if needed) -->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
