@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Login Page</title>
-<style>
+    <meta charset="UTF-8">
+    <title>Instagram Login</title>
+    <style>
         body {
             background-color: #fafafa;
             display: flex;
@@ -21,12 +21,9 @@
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             max-width: 350px;
+            border-radius: 5px;
         }
-        h1 {
-            font-family: 'Billabong', cursive;
-            color: #125688;
-            font-size: 2.5em;
-        }
+       
         label {
             display: block;
             margin-top: 15px;
@@ -55,37 +52,65 @@
             color: red;
             font-weight: bold;
         }
+        .forgot-password {
+            text-align: left;
+            margin-top: 10px;
+        }
+        .signup-link {
+            text-decoration: none;
+            color: #125688;
+        }
+        .facebook-button {
+            width: 100%;
+            background-color: #125688;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .facebook-icon {
+            width: 20px;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
 <div class="login-container">
-	<img src="C:\Users\Puneeth.S\Downloads\Instagram_logo.png" alt="Instgram Logo" style="width:100px;height:auto;margin-bottom:20px;">
-    <h1>Login Page</h1>
+    <img src="https://clipart.info/images/ccovers/1522452762Instagram-logo-png-text.png"
+         style="width:200px;height:auto;margin-bottom:20px;">
+
     <form action="InstagramLoginResults.jsp" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br>
+        <label for="username">Username or Email:</label>
+        <input type="text" id="username" name="username" required>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br>
-        <input type="submit" value="Login">
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Log In">
     </form>
-    </div>
-    <%-- Check for errors and display appropriate message --%>
-    <%
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        if (username != null && password != null) {
-            if (username.length() < 4 && password.length() < 8) {
-                out.println("<p>Error: Username and password must be at least 4 and 8 characters long, respectively.</p>");
-            } else if (username.length() < 4) {
-                out.println("<p>Error: Username must be at least 4 characters long.</p>");
-            } else if (password.length() < 8) {
-                out.println("<p>Error: Password must be at least 8 characters long.</p>");
-            } else {
-                // Forward to loginResults.jsp with username parameter
-                request.setAttribute("username", username);
-                request.getRequestDispatcher("InstagramLoginResults.jsp").forward(request, response);
+    <p class="error-message">
+        <%
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            if (username != null && password != null) {
+                if (username.length() < 4 && password.length() < 8) {
+                    out.println("Error: Username and password must be at least 4 and 8 characters long, respectively.");
+                } else if (username.length() < 4) {
+                    out.println("Error: Username must be at least 4 characters long.");
+                } else if (password.length() < 8) {
+                    out.println("Error: Password must be at least 8 characters long.");
+                }
             }
-        }
-    %>
+        %>
+    </p>
+    <a class="forgot-password" href="#">Forgot Password?</a>
+    <button class="facebook-button">
+        <img class="facebook-icon" src="https://icon-library.com/images/official-facebook-logo-icon/official-facebook-logo-icon-20.jpg" alt="Facebook Icon"> Log In with Facebook
+    </button>
+    <div class="signup-link">
+        <p>Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+    </div>
+</div>
 </body>
 </html>
