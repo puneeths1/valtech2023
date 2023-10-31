@@ -10,4 +10,9 @@ public class App
     {
         System.out.println( "Hello World!" );
     }
+    
+    public  String sayHello() {
+    	System.out.println("Welcome");
+    	return "Welcome";
+    }
 }
