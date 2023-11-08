@@ -18,6 +18,8 @@ import com.valtech.training.hibernate.BankAccountID;
 import com.valtech.training.hibernate.ChequeTx;
 import com.valtech.training.hibernate.Customer;
 import com.valtech.training.hibernate.Employee;
+import com.valtech.training.hibernate.OrderSummary;
+import com.valtech.training.hibernate.OrderSummaryID;
 import com.valtech.training.hibernate.Registration;
 import com.valtech.training.hibernate.TellerTx;
 import com.valtech.training.hibernate.Tx;
@@ -43,6 +45,8 @@ public class HibernateClient {
 		cfg.addAnnotatedClass(Registration.class);
 		cfg.addAnnotatedClass(BankAccount.class);
 		
+//		cfg.addAnnotatedClass(OrderSummary.class);
+		
 		SessionFactory sesFac = cfg.buildSessionFactory();
 		Session ses = sesFac.openSession();
 //		org.hibernate.Transaction tx =ses.beginTransaction();
@@ -51,6 +55,8 @@ public class HibernateClient {
 		
 		BankAccountID id = new BankAccountID("SB",1);
 		BankAccount ba = (BankAccount) ses.load(BankAccount.class, id);
+		
+//		ses.persist(new OrderSummary(new OrderSummaryID(3,2)));
 		
 //		Customer cus = new Customer("ABC",23);
 //		ses.save(cus);

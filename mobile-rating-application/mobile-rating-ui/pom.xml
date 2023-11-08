@@ -34,6 +34,17 @@
     	<artifactId>mobile-ranking</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
+    <dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    	<version>4.0.1</version>
+    	<scope>provided</scope>
+    </dependency>
+    <dependency>
+    	<groupId>com.valtech.training</groupId>
+    	<artifactId>pattern-checker</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>

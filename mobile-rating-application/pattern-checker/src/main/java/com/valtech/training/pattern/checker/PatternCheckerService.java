@@ -6,4 +6,8 @@ public interface PatternCheckerService {
 
 	List<String> listPatterns(String mobile);
 
+	List<String> listPatterns(List<String> mobileNumbers);
+	
+	
+
 }
