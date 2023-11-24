@@ -1,0 +1,10 @@
+com\assignment\empdept\models\EmployeeModels.class
+com\assignment\empdept\controllers\EmployeeController.class
+com\assignment\empdept\models\DepartmentModels.class
+com\assignment\empdept\service\EmployeeService.class
+com\assignment\empdept\repo\DepartmentRepo.class
+com\assignment\empdept\entities\Department.class
+com\assignment\empdept\EmpdeptApplication.class
+com\assignment\empdept\service\EmployeeServiceImpl.class
+com\assignment\empdept\repo\EmployeeRepo.class
+com\assignment\empdept\entities\Employee.class
