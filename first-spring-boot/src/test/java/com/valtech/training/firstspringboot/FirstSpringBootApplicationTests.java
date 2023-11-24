@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.valtech.training.firstspringboot.components.EmployeeDAO;
 import com.valtech.training.firstspringboot.components.HelloWorld;
+import com.valtech.training.firstspringboot.components.SimpleInterest;
 import com.valtech.training.firstspringboot.entities.Order;
 import com.valtech.training.firstspringboot.service.OrderService;
 import com.valtech.training.firstspringboot.service.OrderServiiceImpl;
@@ -28,6 +29,16 @@ class FirstSpringBootApplicationTests {
 		
 		@Autowired 
 		private OrderService orderService;
+		
+		@Autowired
+		private SimpleInterest simpleInterest;
+		
+		
+		@Test
+		void testSI() {
+			simpleInterest.computeInterest(2000, 4, 5);
+			System.out.println(simpleInterest.computeInterest(2000, 4, 5));
+		}
 		
 //		@Test
 //		void testOrders() {

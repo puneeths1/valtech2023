@@ -1,33 +1,64 @@
 package com.valtech.training.invoice;
 
-import java.time.LocalDate;
+import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+@Entity
+@Table(name = "orders")
 public class Order {
-	private int orderID;
-	private int customerID;
-	private LocalDate orderDate;
-	public int getOrderID() {
-		return orderID;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
+    private int orderId;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @Column(name = "order_date")
+    private Date orderDate;
+
+    // Add any other necessary fields
+
+    public Order() {
+        // Default constructor required by Hibernate
+    }
+
+    public Order(String orderDate) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            this.orderDate = dateFormat.parse(orderDate);
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Invalid date format", e);
+        }
+    }
+
+	public int getOrderId() {
+		return orderId;
 	}
-	public void setOrderID(int orderID) {
-		this.orderID = orderID;
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
-	public int getCustomerID() {
-		return customerID;
+
+	public Customer getCustomer() {
+		return customer;
 	}
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
-	public LocalDate getOrderDate() {
+
+	public Date getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(LocalDate orderDate) {
+
+	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public Order(int orderID, int customerID, LocalDate orderDate) {
-		super();
-		this.orderID = orderID;
-		this.customerID = customerID;
-		this.orderDate = orderDate;
-	}
+    
+
 }

@@ -26,7 +26,8 @@ public class OrderModel {
 		this.id=o.getId();
 		this.item=o.getItem();
 		
-		this.description =o.getDescription();this.itemCount=o.getItemCount();
+		this.description =o.getDescription();
+		this.itemCount=o.getItemCount();
 		this.orderDate = o.getOrderDate()==null?"":o.getOrderDate().format(ORDER_DATE_FORMAT);
 	}
 	

@@ -16,9 +16,10 @@ public class ViewingCss {
 
         // Print the class and attribute mappings
         for (String cssClass : cssMap.keySet()) {
-            System.out.println("Class: " + cssClass);
+            System.out.println("Class: " + cssClass.replace("{", ""));
             String attributes = cssMap.get(cssClass);
             System.out.println("Attributes:");
+            attributes = attributes.replace("}", "").trim();
             String[] attributeArray = attributes.split(";");
             for (String attribute : attributeArray) {
                 if (!attribute.trim().isEmpty()) {
@@ -44,12 +45,13 @@ public class ViewingCss {
                 if (line.startsWith(".")) {
                     if (cssClass != null) {
                         // Save the previous class and its attributes
-                        cssMap.put(cssClass,cssMap.get(cssClass).trim());
+                        cssMap.put(cssClass, cssMap.get(cssClass).trim());
                     }
                     cssClass = line.substring(1); // Get the class name
+                    cssMap.put(cssClass, ""); // Initialize attributes for the new class
                 } else if (cssClass != null) {
                     // Append the line as an attribute for the current class
-                    cssMap.put(cssClass, cssMap.get(cssClass) + " "+line);
+                    cssMap.put(cssClass, cssMap.get(cssClass) + " " + line);
                 }
             }
         } catch (IOException e) {
@@ -65,6 +67,7 @@ public class ViewingCss {
 
         while (matcher.find()) {
             String hexColor = matcher.group();
+//            System.out.println("Hex Color:"+hexColor);
             String rgbColor = hexToRgb(hexColor);
             attribute = attribute.replace(hexColor, rgbColor);
         }

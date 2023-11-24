@@ -1,35 +1,44 @@
 package com.valtech.training.invoice;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "companies")
 public class Company {
-	private int companyID;
-	private String companyName;
-	private String companyAddress;
-	public Company() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Company(String companyName, String companyAddress) {
-		super();
-//		this.companyID = companyID;
-		this.companyName = companyName;
-		this.companyAddress = companyAddress;
-	}
-	public int getCompanyID() {
-		return companyID;
-	}
-	public void setCompanyID(int companyID) {
-		this.companyID = companyID;
-	}
+
+    @Id
+    @Column(name = "company_name")
+    private String companyName;
+
+    private String location;
+
+    // Add any other necessary fields and methods
+
+    public Company() {
+        // Default constructor required by Hibernate
+    }
+
+    public Company(String companyName, String location) {
+        this.companyName = companyName;
+        this.location = location;
+    }
+
 	public String getCompanyName() {
 		return companyName;
 	}
+
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	public String getCompanyAddress() {
-		return companyAddress;
+
+	public String getLocation() {
+		return location;
 	}
-	public void setCompanyAddress(String companyAddress) {
-		this.companyAddress = companyAddress;
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
+
+	
+    
 }

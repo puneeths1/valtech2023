@@ -1,44 +1,82 @@
 package com.valtech.training.invoice;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "customers")
 public class Customer {
-	private int customerID;
-	private String customerName;
-	private int customerPhone;
-	private String customerAddress;
-	public Customer() {
-		super();
-		// TODO Auto-generated constructor stub
+
+    @Id
+    @Column(name = "customer_id")
+    private int customerId;
+
+    private String name;
+
+    private String phone;
+
+    private String address;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders = new ArrayList<>();
+
+    // Add any other necessary fields and methods
+
+    public Customer() {
+        // Default constructor required by Hibernate
+    }
+
+    public Customer(int customerId, String name, String phone, String address) {
+        this.customerId = customerId;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+    }
+
+	public int getCustomerId() {
+		return customerId;
 	}
-	public Customer(int customerID, String customerName, int customerPhone, String customerAddress) {
-		super();
-		this.customerID = customerID;
-		this.customerName = customerName;
-		this.customerPhone = customerPhone;
-		this.customerAddress = customerAddress;
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
-	public int getCustomerID() {
-		return customerID;
+
+	public String getName() {
+		return name;
 	}
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCustomerName() {
-		return customerName;
+
+	public String getPhone() {
+		return phone;
 	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public int getCustomerPhone() {
-		return customerPhone;
+
+	public String getAddress() {
+		return address;
 	}
-	public void setCustomerPhone(int customerPhone) {
-		this.customerPhone = customerPhone;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getCustomerAddress() {
-		return customerAddress;
+
+	public List<Order> getOrders() {
+		return orders;
 	}
-	public void setCustomerAddress(String customerAddress) {
-		this.customerAddress = customerAddress;
-	} 
-	
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 }
